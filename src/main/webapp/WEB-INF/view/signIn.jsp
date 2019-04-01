@@ -25,17 +25,20 @@
         <header class="login__header">
         </header>
         <div class="login__body">
-            <t:input-email/>
+            <div class="form__field">
+                <input type="email" name="email" placeholder="<c:if test="${email == null}">Email</c:if>" value="${email}" required>
+            </div>
             <div class="error-message">
             <c:if test="${checkSignIn == false}">Неверный email или пароль
             </c:if>
             </div>
-            <t:input-password/>
+            <div class="form__field">
+                <input type="password" name="password" placeholder="Пароль" required style="margin-bottom: 20px">
+            </div>
             <div class="form__field">
                 <span>Запомнить меня </span><input type="checkbox" name="checkbox">
             </div>
         </div>
-
 
         <footer class="login__footer">
             <input type="submit" value="Войти">

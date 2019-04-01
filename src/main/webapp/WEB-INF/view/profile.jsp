@@ -30,7 +30,6 @@
                         <form action="logOut">
                             <input type="submit" value="выйти">
                         </form>
-
                     </c:if></li>
             </ul>
         </nav>
