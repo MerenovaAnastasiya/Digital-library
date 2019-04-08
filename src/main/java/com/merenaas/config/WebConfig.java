@@ -13,15 +13,14 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@Import({RootConfig.class})
 @ComponentScan(basePackages = {"com.merenaas.controllers"})
 public class WebConfig implements WebMvcConfigurer {
     @Bean
-    public ViewResolver viewResolver() {
-        ViewResolver viewResolver = new InternalResourceViewResolver();
-        ((InternalResourceViewResolver) viewResolver).setViewClass(JstlView.class);
-        ((InternalResourceViewResolver) viewResolver).setPrefix("/WEB-INF/views/");
-        ((InternalResourceViewResolver) viewResolver).setSuffix(".jsp");
+    public InternalResourceViewResolver viewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+         viewResolver.setViewClass(JstlView.class);
+         viewResolver.setPrefix("/WEB-INF/view/");
+         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
     @Override

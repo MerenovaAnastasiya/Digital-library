@@ -34,9 +34,9 @@
     </div>
 </div>
 <t:fixed-footer/>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/js/plugins.js"></script>
-<script src="/js/main.js"></script>
+<script src="/static/js/jquery-1.11.3.min.js"></script>
+<script src="/static/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/plugins.js"></script>
+<script src="/static/js/main.js"></script>
 </body>
 </html>

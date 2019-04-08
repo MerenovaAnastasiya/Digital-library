@@ -16,7 +16,7 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="/static/style/style.css">
 </head>
 <body class="align">
 
@@ -29,41 +29,16 @@
         <div class="login__body">
             <div class="form__field">
                 <form:input path="login"></form:input>
-                <%--<input type="text" name="login" placeholder="<c:if test="${login == null}">Логин</c:if>" value="${login}" required>--%>
             </div>
-            <%--<div class="error-message">--%>
-                <%--<c:if test="${chekLogin == false}">--%>
-                    <%--Неверный формат логина--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${checkLoginForAvailability == false}">--%>
-                    <%--Пользователь с таким логином уже существует--%>
-                <%--</c:if>--%>
-            <%--</div>--%>
             <div class="form__field">
                 <form:input path="email"/>
-                <%--<input type="email" name="email" placeholder="<c:if test="${email == null}">Email</c:if>" value="${email}" required>--%>
             </div>
-            <%--<div class="error-message">--%>
-                <%--<c:if test="${chekEmail == false}">--%>
-                    <%--Неверный формат Email--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${checkEmailForAvailability == false}">--%>
-                    <%--Пользователь с таким Email уже существует--%>
-                <%--</c:if>--%>
-            <%--</div>--%>
             <div class="form__field">
                 <form:password path="password"/>
-                <%--<input type="password" name="password" placeholder="Пароль" required style="margin-bottom: 20px">--%>
             </div>
-            <%--<div class="error-message">--%>
-                <%--<c:if test="${chekPassword == false}">--%>
-                    <%--Неверный формат пароля--%>
-                <%--</c:if>--%>
-            <%--</div>--%>
             <div class="form__field">
                 <span>Запомнить меня </span>
                 <form:checkbox path="checkbox"/>
-                <%--<input type="checkbox" name="checkbox">--%>
             </div>
         </div>
         <footer class="login__footer">

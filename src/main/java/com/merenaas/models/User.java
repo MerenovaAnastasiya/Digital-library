@@ -1,34 +1,48 @@
 package com.merenaas.models;
 
 import lombok.*;
-
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import lombok.Builder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import javax.validation.constraints.Email;
+import java.util.Set;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-@Getter
-@Setter
+
 @ToString(exclude = "basket")
-@Builder
 @EqualsAndHashCode(exclude = "basket")
-
+@Data
+@Entity
+@NoArgsConstructor
+@Table(name="library_user")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
+
+    @Column
     @NotNull
-    @Size(min = 5, max = 60)
     private String login;
+
+    @Column
+    @NotNull
     private String phoneNumber;
-    @Email
+
+    @Column
+    @NotNull
     private String email;
+
+    @Column
+    @NotNull
     private String password;
-    private List<Order> orders;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Order> orders;
+
+    @Column
     private String uuid;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
     private Basket basket;
 }
 
