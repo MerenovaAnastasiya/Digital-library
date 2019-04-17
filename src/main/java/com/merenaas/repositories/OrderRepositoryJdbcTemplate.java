@@ -7,14 +7,12 @@
 //import org.springframework.jdbc.support.GeneratedKeyHolder;
 //import org.springframework.jdbc.support.KeyHolder;
 //import org.springframework.stereotype.Component;
-//import org.springframework.stereotype.Repository;
 //
 //import javax.sql.DataSource;
 //import java.sql.*;
-//import java.time.LocalDate;
-//import java.util.ArrayList;
 //import java.util.List;
 //import java.util.Optional;
+//import java.util.Set;
 //
 //@Component("orderRepository")
 //public class OrderRepositoryJdbcTemplate implements OrderRepository {
@@ -138,7 +136,7 @@
 //
 //
 //    @Override
-//    public void saveOrder(List<Book> bookList, Order order) {
+//    public void saveOrder(Set<Book> bookList, Order order) {
 //        for (Book book : bookList) {
 //            jdbcTemplate.update(SQL_INSERT_INTO_ORDER_BOOK, order.getId(), book.getId());
 //        }

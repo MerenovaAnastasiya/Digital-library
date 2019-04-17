@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @ToString(exclude = "basket")
 @EqualsAndHashCode(exclude = "basket")
+//@Builder
 @Data
 @Entity
 @NoArgsConstructor

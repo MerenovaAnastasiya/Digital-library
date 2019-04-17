@@ -16,10 +16,7 @@
 //
 //import java.sql.SQLException;
 //import java.time.LocalDate;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Optional;
-//
+//import java.util.*;
 //
 //
 //@Service
@@ -51,12 +48,12 @@
 //                .email(checkoutForm.getEmail())
 //                .comment(checkoutForm.getComment())
 //                .user(user)
-//                .bookList(new ArrayList<>())
+//                .books(new HashSet<>())
 //                .build();
 //        try {
 //            orderRepository.save(order);
 //            Long basketId = user.getBasket().getId();
-//            List<Book> books = basketRepository.findOne(basketId).get().getBooks();
+//            Set<Book> books = basketRepository.findOne(basketId).get().getBooks();
 //            orderRepository.saveOrder(books, order);
 //            basketRepository.delete(basketId);
 //        } catch (SQLException e) {

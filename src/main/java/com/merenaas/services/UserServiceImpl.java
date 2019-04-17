@@ -14,6 +14,7 @@
 //
 //import java.sql.SQLException;
 //import java.util.ArrayList;
+//import java.util.HashSet;
 //import java.util.Optional;
 //import java.util.UUID;
 //import java.util.regex.Matcher;
@@ -46,11 +47,11 @@
 //                .email(signUpForm.getEmail())
 //                .password(encoder.encode(signUpForm.getPassword()))
 //                .uuid(UUID.randomUUID().toString())
-//                .orders(new ArrayList<>())
+//                .orders(new HashSet<>())
 //                .build();
 //        Basket basket = Basket.builder()
 //                .user(user)
-//                .books(new ArrayList<>())
+//                .books(new HashSet<>())
 //                .build();
 //        user.setBasket(basket);
 //        basketRepository.save(basket);

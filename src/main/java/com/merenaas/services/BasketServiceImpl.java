@@ -7,33 +7,33 @@
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Service;
-//import com.merenaas.repositories.BasketRepository;
-//import com.merenaas.repositories.UserRepository;
+////import com.merenaas.repositories.BasketRepository;
+////import com.merenaas.repositories.UserRepository;
 //
 //import java.sql.SQLException;
 //import java.util.*;
 //
 //@Service
 //public class BasketServiceImpl implements BasketService {
-//    @Autowired
-//    private BasketRepository basketRepository;
+////    @Autowired
+////    private BasketRepository basketRepository;
 //
 //
-//    public BasketServiceImpl(BasketRepository basketRepository) {
-//        this.basketRepository = basketRepository;
-//    }
-//    @Override
-//    public Basket getBasketById(Long id) {
-//        Optional<Basket> basketOptional = basketRepository.findOne(id);
-//        if (basketOptional.isPresent()) {
-//            return basketOptional.get();
-//        } else {
-//            throw new IllegalArgumentException("Не удалось получить корзину по Id через service");
-//        }
-//    }
+////    public BasketServiceImpl(BasketRepository basketRepository) {
+////        this.basketRepository = basketRepository;
+////    }
+////    @Override
+////    public Basket getBasketById(Long id) {
+//////        Optional<Basket> basketOptional = basketRepository.findOne(id);
+////        if (basketOptional.isPresent()) {
+////            return basketOptional.get();
+////        } else {
+////            throw new IllegalArgumentException("Не удалось получить корзину по Id через service");
+////        }
+////    }
 //    @Override
 //    public Map<Book, Integer> getUserBooks(Basket basket) {
-//        List<Book> books = basket.getBooks();
+//        Set<Book> books = basket.getBooks();
 //        Map<Book, Integer> userBooks = new HashMap<>();
 //        for (Book book : books) {
 //            if (userBooks.containsKey(book)) {

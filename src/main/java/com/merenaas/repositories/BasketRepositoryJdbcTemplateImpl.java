@@ -54,7 +54,7 @@
 //                .login(resultSet.getString("login"))
 //                .phoneNumber(resultSet.getString("phone_number"))
 //                .email(resultSet.getString("email"))
-//                .password(resultSet.getString("password"))
+////                .password(resultSet.getString("password"))
 //                .uuid(resultSet.getString("uuid"))
 //                .basket(basket)
 //                .build();

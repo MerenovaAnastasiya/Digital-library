@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
+//@Builder
 @Entity
 @Table(name = "book")
 public class Book {

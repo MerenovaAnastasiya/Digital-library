@@ -10,6 +10,7 @@ import java.util.Set;
 @ToString(exclude = "user")
 @Data
 @Entity
+
 @Table(name = "basket")
 public class Basket {
     @Id

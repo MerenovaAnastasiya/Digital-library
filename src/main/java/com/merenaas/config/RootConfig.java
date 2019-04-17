@@ -18,7 +18,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"com.merenaas.models", "com.merenaas.repositories"})
+@ComponentScan({"com.merenaas.models", "com.merenaas.repositories", "com.merenaas.services"})
 @PropertySource("classpath:db.properties")
 @EnableJpaRepositories(basePackages = {"com.merenaas.repositories"})
 public class RootConfig {

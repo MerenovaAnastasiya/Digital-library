@@ -3,9 +3,9 @@
 //import com.merenaas.models.Book;
 //import com.merenaas.models.Order;
 //
-//import java.util.List;
+//import java.util.Set;
 //
 //public interface OrderRepository extends CrudRepository<Order> {
-//     void saveOrder(List<Book> bookList, Order order);
+//     void saveOrder(Set<Book> bookList, Order order);
 //}
 //

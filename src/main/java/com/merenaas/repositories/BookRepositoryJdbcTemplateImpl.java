@@ -5,11 +5,14 @@
 //import org.springframework.jdbc.core.JdbcTemplate;
 //import org.springframework.jdbc.core.RowMapper;
 //import org.springframework.stereotype.Component;
+//import org.springframework.stereotype.Service;
+//
 //import javax.sql.DataSource;
 //import java.util.List;
 //import java.util.Optional;
 //
-//@Component("bookRepository")
+////@Component("bookRepository")
+// @Service
 //public class BookRepositoryJdbcTemplateImpl implements BookRepository {
 //    private JdbcTemplate jdbcTemplate;
 //
@@ -23,13 +26,13 @@
 //    //language=SQL
 //    private static final String SQL_FIND_ALL_BOOKS = "SELECT * FROM book";
 //
-//    private RowMapper<Book> bookRowMapper = (resultSet, i) -> Book.builder()
-//            .id(resultSet.getLong("id"))
-//            .bookName(resultSet.getString("book_name"))
-//            .author(resultSet.getString("author"))
-//            .path(resultSet.getString("path"))
-//            .description(resultSet.getString("description"))
-//            .build();
+////    private RowMapper<Book> bookRowMapper = (resultSet, i) -> Book.builder()
+////            .id(resultSet.getLong("id"))
+////            .bookName(resultSet.getString("book_name"))
+////            .author(resultSet.getString("author"))
+////            .path(resultSet.getString("path"))
+////            .description(resultSet.getString("description"))
+////            .build();
 //
 //    @Override
 //    public Optional<Book> findOne(Long id) {
@@ -55,6 +58,7 @@
 //
 //    @Override
 //    public List<Book> findAll() {
+//        return b
 //        return jdbcTemplate.query(SQL_FIND_ALL_BOOKS, bookRowMapper);
 //    }
 //}

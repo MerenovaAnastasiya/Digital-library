@@ -9,6 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,12 +24,12 @@
 
 <div class="grid">
     <%--<form method="post" class="form login">--%>
-    <form:form method="post" cssClass="form login" modelAttribute="user">
+    <form:form method="post" cssClass="form login">
         <header class="login__header">
         </header>
         <div class="login__body">
             <div class="form__field">
-                <form:input path="login"></form:input>
+                <form:input path="login"/>
             </div>
             <div class="form__field">
                 <form:input path="email"/>
