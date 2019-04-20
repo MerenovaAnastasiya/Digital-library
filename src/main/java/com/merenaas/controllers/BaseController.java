@@ -1,7 +1,7 @@
 package com.merenaas.controllers;
 
-//import com.merenaas.services.BookService;
-import com.merenaas.forms.SignInForm;
+
+import com.merenaas.forms.SignUpForm;
 import com.merenaas.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,29 +19,29 @@ public class BaseController {
     }
 
     @GetMapping(value = "/main")
-    public String mainGet(Model model) {
+    public String mainPage(Model model) {
         model.addAttribute("books", bookService.getAllBooks());
         return "main";
     }
 
     @GetMapping(value = "/signIn")
-    public String signInGet() {
+    public String signInPage() {
         return "signIn";
     }
 
     @GetMapping(value = "/signUp")
-    public String signUpGet(Model model) {
-        model.addAttribute("signUpFotm", new SignInForm());
+    public String signUpPage(Model model) {
+        model.addAttribute("signUpForm", new SignUpForm());
         return "signUp";
     }
 
     @GetMapping(value = "/profile")
-    public String profileGet() {
+    public String profilePage() {
         return "profile";
     }
 
     @GetMapping(value = "/library")
-    public String libraryleGet(Model model) {
+    public String libraryPage(Model model) {
         model.addAttribute("books", bookService.getAllBooks());
         return "library";
     }

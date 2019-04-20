@@ -3,29 +3,34 @@ package com.merenaas.services;
 import com.merenaas.forms.SignUpForm;
 import com.merenaas.models.Basket;
 import com.merenaas.models.User;
+import com.merenaas.models.UserRoleEnum;
+import com.merenaas.repositories.BasketRepository;
 import com.merenaas.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
 
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
+    private BasketRepository basketRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository,
+    public UserService(UserRepository userRepository, BasketRepository basketRepository,
                        PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.basketRepository = basketRepository;
         this.passwordEncoder = passwordEncoder;
+
     }
 
-    public boolean signUp(SignUpForm registrationForm) {
+    public void signUp(SignUpForm registrationForm) {
         User user = new User();
         user.setEmail(registrationForm.getEmail());
         user.setLogin(registrationForm.getLogin());
@@ -36,14 +41,26 @@ public class UserService {
         Basket basket = new Basket();
         basket.setUser(user);
         basket.setBooks(new HashSet<>());
-        try {
-            userRepository.save(user);
-        }
-        catch (DataIntegrityViolationException e) {
-            return false;
-        }
-        return true;
+        user.setBasket(basket);
+        basketRepository.save(basket);
+        userRepository.save(user);
+        basketRepository.setUserToBasket(user, basket.getId());
+        userRepository.setBasketToUser(basket, user.getId());
+
     }
+
+//    public void saveUser(User user, Map<String, String> form) {
+//        Set<String> roles = Arrays.stream(UserRoleEnum.values())
+//                .map(UserRoleEnum::name)
+//                .collect(Collectors.toSet());
+//        user.getRoles().clear();
+//        for (String key : form.keySet()) {
+//            if (roles.contains(key)) {
+//                user.getRoles().add(Roles.valueOf(key));
+//            }
+//        }
+//        userRepository.save(user);
+//    }
 
 
     //    @Override

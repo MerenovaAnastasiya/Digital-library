@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
 
 @ToString(exclude = "basket")
 @EqualsAndHashCode(exclude = "basket")
-//@Builder
 @Data
 @Entity
 @NoArgsConstructor
@@ -25,7 +24,6 @@ public class User {
     private String login;
 
     @Column
-    @NotNull
     private String phoneNumber;
 
     @Column
@@ -43,7 +41,7 @@ public class User {
     private String uuid;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="basket_id")
     private Basket basket;
 }
 

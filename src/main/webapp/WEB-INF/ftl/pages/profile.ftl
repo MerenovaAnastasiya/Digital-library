@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -20,20 +20,20 @@
         <nav id="main-nav-wrap">
             <ul class="main-navigation">
                 <li><a href="/library">Библиотека</a></li>
-                <li class="highlight with-sep">
-                    <#if authorized??>
-                        <#if authorized == false><a href="/signIn" title="">Войти</a></#if>
-                        <#if authorized == true>
-                            <form action="logOut">
-                                <input type="submit" value="выйти">
-                            </form>
-                        </#if>
-                    <#else>
-                        <form action="logOut">
-                            <input type="submit" value="выйти">
-                        </form>
-                    </#if>
-                </li>
+                <#--<li class="highlight with-sep">-->
+                    <#--<#if authorized??>-->
+                        <#--<#if authorized == false><a href="/signIn" title="">Войти</a></#if>-->
+                        <#--<#if authorized == true>-->
+                            <#--<form action="logOut">-->
+                                <#--<input type="submit" value="выйти">-->
+                            <#--</form>-->
+                        <#--</#if>-->
+                    <#--<#else>-->
+                        <#--<form action="logOut">-->
+                            <#--<input type="submit" value="выйти">-->
+                        <#--</form>-->
+                    <#--</#if>-->
+                <#--</li>-->
             </ul>
         </nav>
     </div>
@@ -45,7 +45,7 @@
         <div class="col-sm-10">
         </div>
     </div>
-    <#include "ordering.ftl"/>
+    <#--<#include "ordering.ftl"/>-->
         <h2>книги</h2>
     <div class="row profile-basket">
         <#if userBooks??>
@@ -67,7 +67,11 @@
         </#if>
     </div>
 </div>
-<#include "../macros/fixed-footer.ftl"/>
+<footer class="page-footer font-small unique-color-dark fixed-bottom">
+    <div class="footer-copyright text-center py-3">© 2018 Copyright: Merenaas
+    </div>
+</footer>
+
 <script src="/js/jquery-1.11.3.min.js"></script>
 <script src="/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>

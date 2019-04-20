@@ -4,12 +4,9 @@ import com.merenaas.forms.SignUpForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.merenaas.services.UserService;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -23,13 +20,17 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public String signUpPost(@Validated @ModelAttribute("signUpForm")
-                             SignUpForm signUpForm, BindingResult result) {
-        if(result.hasErrors()) {
-            return "signUp";
-        }
-        return "redirect:"  + MvcUriComponentsBuilder.fromMappingName("RC#loginPage").build();
+    public String signUpPost(@ModelAttribute("signUpForm")
+                                     SignUpForm signUpForm, BindingResult result) {
+        userService.signUp(signUpForm);
+//        if(!userService.signUp(signUpForm)) {
+//            result.rejectValue();
+//        }
 
+//        if(result.hasErrors()) {
+//            return "signUp";
+//        }
+        return "redirect:/profile";
     }
 
 }

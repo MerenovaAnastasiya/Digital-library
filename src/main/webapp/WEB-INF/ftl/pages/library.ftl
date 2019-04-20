@@ -1,5 +1,7 @@
-<html>
+<#ftl encoding='UTF-8'>
+<!DOCTYPE html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -10,7 +12,6 @@
     <script src="/static/js/modernizr.js"></script>
 </head>
 <body>
-<#--<t:navbar/>-->
 <header>
     <div class="row">
         <div class="logo">
@@ -29,11 +30,8 @@
                 </li>
             </ul>
         </nav>
-
         <a class="menu-toggle" href="#"><span>Menu</span></a>
-
     </div>
-
 </header>
 <div class="container library-container">
     <h2>Наша библиотека</h2>
@@ -46,7 +44,10 @@
     </div>
 </div>
 <#--<t:fixed-footer/>-->
-<#include "../macros/fixed-footer.ftl"/>
+<footer class="page-footer font-small unique-color-dark fixed-bottom">
+    <div class="footer-copyright text-center py-3">© 2018 Copyright: Merenaas
+    </div>
+</footer>
 <script src="/js/jquery-1.11.3.min.js"></script>
 <script src="/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/js/plugins.js"></script>

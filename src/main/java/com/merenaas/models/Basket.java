@@ -13,13 +13,14 @@ import java.util.Set;
 
 @Table(name = "basket")
 public class Basket {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="basket_id", nullable = false)
     private User user;
 
     @ManyToMany
@@ -27,4 +28,5 @@ public class Basket {
             joinColumns = {@JoinColumn(name = "basket_id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
     private Set<Book> books;
+
 }
