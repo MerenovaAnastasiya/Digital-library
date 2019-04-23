@@ -5,12 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.context.annotation.Bean;
 
-import javax.validation.constraints.NotNull;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import javax.validation.constraints.*;
 
 @Data
 @AllArgsConstructor
@@ -18,9 +14,15 @@ import java.util.regex.Pattern;
 @Builder
 public class SignUpForm  {
 
+    @NotBlank
+    @Pattern(regexp = "[A-Za-z0-9_]{3,16}", message = "{login.incorrect}")
     private String login;
 
+    @NotBlank
+    @Email
     private String email;
 
+    @NotBlank
+    @Pattern(regexp = "[A-Za-z0-9_]{6,16}", message = "{password.incorrect}")
     private String password;
 }

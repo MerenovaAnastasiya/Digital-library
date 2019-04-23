@@ -6,8 +6,12 @@ import com.merenaas.models.User;
 import com.merenaas.models.UserRoleEnum;
 import com.merenaas.repositories.BasketRepository;
 import com.merenaas.repositories.UserRepository;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +19,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+@NoArgsConstructor
+public class UserService{
 
     private PasswordEncoder passwordEncoder;
     private UserRepository userRepository;
@@ -31,7 +36,10 @@ public class UserService {
     }
 
     public void signUp(SignUpForm registrationForm) {
+        Set<UserRoleEnum> roleSet = new HashSet<>();
+        roleSet.add(UserRoleEnum.USER);
         User user = new User();
+
         user.setEmail(registrationForm.getEmail());
         user.setLogin(registrationForm.getLogin());
         user.setPassword(passwordEncoder.encode(registrationForm.getPassword()));
@@ -39,15 +47,20 @@ public class UserService {
         user.setOrders(new HashSet<>());
 
         Basket basket = new Basket();
-        basket.setUser(user);
         basket.setBooks(new HashSet<>());
         user.setBasket(basket);
+        user.setRoles(roleSet);
         basketRepository.save(basket);
         userRepository.save(user);
         basketRepository.setUserToBasket(user, basket.getId());
-        userRepository.setBasketToUser(basket, user.getId());
+//        userRepository.setBasketToUser(basket, user.getId());
 
     }
+
+//    @Override
+//    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+//        return userRepository.findByEmail(email);
+//    }
 
 //    public void saveUser(User user, Map<String, String> form) {
 //        Set<String> roles = Arrays.stream(UserRoleEnum.values())

@@ -19,21 +19,20 @@
         </div>
         <nav id="main-nav-wrap">
             <ul class="main-navigation">
-                <li><a href="/library">Библиотека</a></li>
-                <#--<li class="highlight with-sep">-->
-                    <#--<#if authorized??>-->
-                        <#--<#if authorized == false><a href="/signIn" title="">Войти</a></#if>-->
-                        <#--<#if authorized == true>-->
-                            <#--<form action="logOut">-->
-                                <#--<input type="submit" value="выйти">-->
-                            <#--</form>-->
-                        <#--</#if>-->
-                    <#--<#else>-->
-                        <#--<form action="logOut">-->
-                            <#--<input type="submit" value="выйти">-->
-                        <#--</form>-->
-                    <#--</#if>-->
-                <#--</li>-->
+                <#--<li><a href="/library">Библиотека</a></li>-->
+                <li class="highlight with-sep">
+                    <#if authorized??>
+                        <#if authorized == true>
+                            <form action="logOut">
+                                <input type="submit" value="выйти">
+                            </form>
+                        </#if>
+                    <#else>
+                        <form action="/logOut">
+                            <input type="submit" value="выйти">
+                        </form>
+                    </#if>
+                </li>
             </ul>
         </nav>
     </div>

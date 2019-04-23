@@ -20,7 +20,7 @@ public class Basket {
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="basket_id", nullable = false)
+    @JoinColumn(name="user_id")
     private User user;
 
     @ManyToMany

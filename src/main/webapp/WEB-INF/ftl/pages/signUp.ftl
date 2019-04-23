@@ -10,19 +10,28 @@
 <body class="align">
     <div class="grid">
         <form method="post" class="form login" action="/signUp">
+            <@spring.bind "signUpForm"/>
             <header class="login__header">
                 <span>Регистрация</span>
             </header>
             <div class="login__body">
                 <div class="form__field">
-                    <@spring.bind "signUpForm"/>
-                        <@spring.formInput "signUpForm.login" "placeholder='Логин'"/>
+                    <@spring.formInput "signUpForm.login" "placeholder='Логин'"/>
+                </div>
+                <div class="error-message">
+                    <@spring.showErrors "signUpForm.login"/>
                 </div>
                 <div class="form__field">
-                        <@spring.formInput "signUpForm.email" "placeholder='Email'"/>
+                    <@spring.formInput "signUpForm.email" "placeholder='Email'"/>
+                </div>
+                <div class="error-message">
+                     <@spring.showErrors "signUpForm.email"/>
                 </div>
                 <div class="form__field">
-                        <@spring.formPasswordInput "signUpForm.password" "placeholder='Пароль'"/>
+                    <@spring.formPasswordInput "signUpForm.password" "placeholder='Пароль'"/>
+                </div>
+                <div class="error-message">
+                    <@spring.showErrors "signUpForm.password"/>
                 </div>
             </div>
             <footer class="login__footer">

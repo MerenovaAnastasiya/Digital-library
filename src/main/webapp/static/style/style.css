@@ -199,9 +199,9 @@ input[type='submit'] {
 }
 .error-message {
     height: 50px;
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 10px;
-    color: #bd2130;
+    color: #dc3545;
 }
 
 .login__footer {

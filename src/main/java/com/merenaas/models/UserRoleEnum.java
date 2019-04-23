@@ -1,11 +1,12 @@
 package com.merenaas.models;
 
-public enum UserRoleEnum {
-    ADMIN,
-    USER,
-    ANONYMOUS;
+import org.springframework.security.core.GrantedAuthority;
 
-    UserRoleEnum() {
+public enum UserRoleEnum implements GrantedAuthority {
+    USER;
 
+    @Override
+    public String getAuthority() {
+        return name();
     }
 }

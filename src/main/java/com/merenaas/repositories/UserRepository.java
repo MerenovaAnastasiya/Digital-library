@@ -12,11 +12,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
-    @Modifying
-    @Transactional
-    @Query("UPDATE User SET " +
-            "basket = :basket " +
-            "WHERE id = :id")
-    void setBasketToUser(@Param("basket") Basket basket,
-                   @Param("id") Long id);
+    User findOneByEmail(String email);
 }

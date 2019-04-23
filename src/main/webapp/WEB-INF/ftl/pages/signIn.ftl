@@ -17,8 +17,14 @@
                 <div class="form__field">
                     <input id="email" name="email" type="email" placeholder="Email" required>
                 </div>
+                <div class="error-message">
+
+                </div>
                 <div class="form__field">
                     <input type="password" name="password" placeholder="Пароль" required>
+                </div>
+                <div class="error-message">
+
                 </div>
             </div>
             <footer class="login__footer">
