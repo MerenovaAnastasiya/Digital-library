@@ -70,4 +70,11 @@ public class UserService {
         user.getBasket().getBooks().clear();
     }
 
+    public User getUserByEmail(String email) {
+        return userRepository.findOneByEmail(email);
+    }
+    public User getUserByLogin(String login) {
+        return userRepository.findOneByLogin(login);
+    }
+
 }
