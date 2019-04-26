@@ -33,6 +33,9 @@
                 <div class="error-message">
                     <@spring.showErrors "signUpForm.password"/>
                 </div>
+                <#--<div>-->
+                    <#--<@spring.formCheckbox "signUpForm.rememberMe"/>-->
+                <#--</div>-->
             </div>
             <footer class="login__footer">
                 <input type="submit" value="Регистрация">

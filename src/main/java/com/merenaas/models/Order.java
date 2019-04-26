@@ -35,23 +35,23 @@ public class Order {
     @NotNull
     private String address;
 
-    @Column
-    @NotNull
-    private LocalDate date;
+//    @Column
+//    @NotNull
+//    private LocalDate date;
 
-    @Column(name = "user_first_name")
-    private String userFirstName;
-
-    @Column(name = "user_last_name")
-    private String userLastName;
-
-    @Column
-    @NotNull
-    private String phone;
-
-    @Column
-    @NotNull
-    private String email;
+//    @Column(name = "user_first_name")
+//    private String userFirstName;
+//
+//    @Column(name = "user_last_name")
+//    private String userLastName;
+//
+//    @Column
+//    @NotNull
+//    private String phone;
+//
+//    @Column
+//    @NotNull
+//    private String email;
 
     @Column
     private String comment;

@@ -1,55 +1,18 @@
-
+<#import "/spring.ftl" as spring />
 <div class="container">
-    <form method="post" action="/checOut">
-        <div class="row">
+    <form method="post" action="/checkOut">
+        <div class="row  mb-2">
             <div class="col-sm-2">
                 <label for="address">
                     Адрес доставки *
                 </label>
             </div>
             <div class="col-sm-5">
-                <input type="text" id="address" name="address">
+                <@spring.formInput "checkoutForm.address"/>
+                <#--<input type="text" id="address" name="address">-->
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="date">
-                    Дата *
-                </label>
-            </div>
-            <div class="col-sm-5">
-                <input type="date" id="date" name="date">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="first-name">
-                    Имя *
-                </label>
-            </div>
-            <div class="col-sm-5">
-                <input type="text" id="first-name" name="first-name" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="last-name">
-                    Фамилия *
-                </label>
-            </div>
-            <div class="col-sm-5">
-                <input type="text" id="last-name" name="last-name" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <label for="phone">
-                    Телефон *
-                </label>
-            </div>
-            <div class="col-sm-5">
-                <input type="tel" id="phone" name="phone" required>
-            </div>
+       <div class="row">-->
         </div>
         <div class="row">
             <div class="col-sm-2">
@@ -58,7 +21,8 @@
                 </label>
             </div>
             <div class="col-sm-5">
-                <input type="email" id="email" name="email">
+                <@spring.formInput "checkoutForm.email"/>
+                <#--<input type="email" id="email" name="email">-->
             </div>
         </div>
         <div class="row">
@@ -68,7 +32,8 @@
                 </label>
             </div>
             <div class="col-sm-5">
-                <input type="tel" id="comment" name="comment" class="comment-input">
+                <@spring.formInput "checkoutForm.comment"/>
+                <#--<input type="tel" id="comment" name="comment" class="comment-input">-->
             </div>
         </div>
         <div class="row">

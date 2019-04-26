@@ -1,5 +1,6 @@
 package com.merenaas.config;
 
+
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -34,7 +35,9 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
     @Override
     protected Filter[] getServletFilters() {
         List<Filter> filters = new ArrayList<>();
-        filters.add(new DelegatingFilterProxy("springSecurityFilterChain"));
+        DelegatingFilterProxy filterProxy = new DelegatingFilterProxy();
+        filterProxy.setTargetBeanName("springSecurityFilterChain");
+        filters.add(filterProxy);
         return filters.toArray(new Filter[]{});
     }
 

@@ -22,11 +22,9 @@
             <ul class="main-navigation">
                 <li><a href="/library">Библиотека</a></li>
                 <li class="highlight with-sep">
-                    <#if authorized??>
-                        <#if authorized == false><a href="/signIn" title="">Войти</a></#if>
-                        <#if authorized == true><a href="profile" style="color: white">${user.login}</a></#if>
-                    <#else><a href="/signIn" title="">Войти</a>
-                    </#if>
+                        <#if user??>
+                            <a href="profile" style="color: white">${user.login}</a>
+                        <#else><a href="/signIn" title="">Войти</a></a></#if>
                 </li>
             </ul>
         </nav>
@@ -117,13 +115,13 @@
         <div class="col-twelve with-bottom-line">
 
 
-            <h1>Бестселлеры</h1>
+            <h1>Новинки</h1>
         </div>
     </div>
     <div class="row books-row">
         <#list books as book>
             <div class="col-sm-12 col-lg-3  book-item">
-                <a href="book?name=${book.id}"><img src="${book.path}"></a>
+                <a href="book?isbn13=${book.ISBN13}"><img src="${book.path}"></a>
             </div>
         </#list>
 

@@ -46,9 +46,8 @@ public class User implements UserDetails {
     @Column
     private String uuid;
 
-    @Transient
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name="basket_id")
+    @OneToOne
+    @JoinColumn(name="basket_id")
     private Basket basket;
 
 

@@ -19,8 +19,9 @@ public class Basket {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name="user_id")
+    @Transient
     private User user;
 
     @ManyToMany

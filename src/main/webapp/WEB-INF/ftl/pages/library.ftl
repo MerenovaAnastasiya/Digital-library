@@ -38,7 +38,7 @@
     <div class="row books-row">
         <#list books as book>
             <div class="col-sm-12 col-lg-3 book-item">
-                <a href="book?name=${book.id}"><img src="${book.path}"></a>
+                <a href="book?isbn13=${book.ISBN13}"><img src="${book.path}"></a>
             </div>
         </#list>
     </div>

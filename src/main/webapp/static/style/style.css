@@ -3,9 +3,8 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-
+    font-size: 15px;
 }
-
 
 a:hover {
     text-decoration: none;
@@ -62,7 +61,7 @@ a:hover {
 :root {
     --bodyBackgroundColor: #eaeaea;
     --bodyColor: #999;
-    --bodyFontSize: 0.875rem;
+    --bodyFontSize: 15px;
     --bodyFontWeight: 400;
     --bodyLineHeight: 1.5;
 }

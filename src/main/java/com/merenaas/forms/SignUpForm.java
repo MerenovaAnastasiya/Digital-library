@@ -25,4 +25,6 @@ public class SignUpForm  {
     @NotBlank
     @Pattern(regexp = "[A-Za-z0-9_]{6,16}", message = "{password.incorrect}")
     private String password;
+
+    private Boolean rememberMe;
 }
