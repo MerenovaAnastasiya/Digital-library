@@ -3,39 +3,58 @@
     <form method="post" action="/checkOut">
         <div class="row  mb-2">
             <div class="col-sm-2">
-                <label for="address">
+                <label>
                     Адрес доставки *
                 </label>
             </div>
             <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.address"/>
-                <#--<input type="text" id="address" name="address">-->
             </div>
         </div>
        <div class="row">-->
         </div>
         <div class="row">
             <div class="col-sm-2">
-                <label for="email">
+                <label>
                     Электронная почта
                 </label>
             </div>
             <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.email"/>
-                <#--<input type="email" id="email" name="email">-->
             </div>
         </div>
         <div class="row">
             <div class="col-sm-2">
-                <label for="comment">
+                <label>
                     Комментарий
                 </label>
             </div>
             <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.comment"/>
-                <#--<input type="tel" id="comment" name="comment" class="comment-input">-->
             </div>
         </div>
+        <p>TTTTTTT</p>
+        <div class="row">
+            <div class="col-sm-2">
+                <label>
+                    Дата возврата
+                </label>
+            </div>
+            <div class="col-sm-5">
+                <@spring.formInput "checkoutForm.datedOfDelivery"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <label>
+                    Дата доставки
+                </label>
+            </div>
+            <div class="col-sm-5">
+                <@spring.formInput "checkoutForm.dateOfReturn"/>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-2">
             </div>

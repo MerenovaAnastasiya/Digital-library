@@ -6,17 +6,15 @@ import com.merenaas.forms.CheckoutForm;
 import com.merenaas.forms.SignUpForm;
 import com.merenaas.models.Basket;
 import com.merenaas.models.Book;
+import com.merenaas.models.Order;
 import com.merenaas.models.User;
 import com.merenaas.services.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -24,14 +22,13 @@ import java.util.Set;
 @Controller
 public class BaseController {
 
-    public BaseController(BookService bookService) {
+    public BaseController() {
     }
 
     @GetMapping(value = "/main")
     public String mainPage(Model model, @AuthenticationPrincipal User user) {
         model.addAttribute("books", Objects.requireNonNull(BookLoader.getAllBooks()));
         model.addAttribute("user", user);
-
         return "main";
     }
 
@@ -49,12 +46,14 @@ public class BaseController {
     }
 
     @GetMapping(value = "/profile")
-    public String profilePage(Model model, @AuthenticationPrincipal User user) {
+    public String profilePage(Model model, @AuthenticationPrincipal User user ) {
         model.addAttribute("user", user);
         Basket basket = user.getBasket();
         Set<Book> bookSet = basket.getBooks();
+        List<Order> orders = user.getOrders();
         model.addAttribute("books", bookSet);
         model.addAttribute("checkoutForm", new CheckoutForm());
+        model.addAttribute("orders", orders);
         return "profile";
     }
 

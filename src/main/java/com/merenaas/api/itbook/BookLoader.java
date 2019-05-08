@@ -103,10 +103,4 @@ public class BookLoader {
         return book;
     }
 
-    public static void main(String[] args) {
-        Book book = getBookByIsbn13("9781484206485");
-        System.out.println(book.getBookName());
-        System.out.println(book.getPath());
-    }
-
 }

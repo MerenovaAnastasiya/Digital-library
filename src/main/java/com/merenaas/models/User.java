@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -40,8 +41,8 @@ public class User implements UserDetails {
     @NotNull
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Order> orders;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders = new ArrayList<>();
 
     @Column
     private String uuid;

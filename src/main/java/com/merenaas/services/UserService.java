@@ -11,15 +11,13 @@ import com.merenaas.repositories.OrderRepository;
 import com.merenaas.repositories.UserRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @NoArgsConstructor
@@ -42,13 +40,11 @@ public class UserService {
 
     public void signUp(SignUpForm registrationForm) {
         Basket basket = new Basket();
-        basket.setBooks(new HashSet<>());
         User user = new User();
         user.setEmail(registrationForm.getEmail());
         user.setLogin(registrationForm.getLogin());
         user.setPassword(passwordEncoder.encode(registrationForm.getPassword()));
         user.setUuid(UUID.randomUUID().toString());
-        user.setOrders(new HashSet<>());
         user.setBasket(basket);
         Set<UserRoleEnum> roleSet = new HashSet<>();
         roleSet.add(UserRoleEnum.USER);
@@ -56,18 +52,24 @@ public class UserService {
         user.setUuid(UUID.randomUUID().toString());
         basketRepository.save(basket);
         userRepository.save(user);
-
-
     }
 
     public void checkOut(CheckoutForm checkoutForm, User user) {
         Order order = new Order();
         order.setAddress(checkoutForm.getAddress());
         order.setComment(checkoutForm.getComment());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateOfDelivery = LocalDate.parse(checkoutForm.getDateOfDelivery(), formatter);
+        LocalDate dateOfReturn = LocalDate.parse(checkoutForm.getDateOfReturn(), formatter);
+        order.setDateOfDelivery(dateOfDelivery);
+        order.setDateOfReturn(dateOfReturn);
+        order.setDateOfOrder(LocalDate.now());
         order.setUser(user);
         order.setBooks(user.getBasket().getBooks());
+        user.getOrders().add(order);
         orderRepository.save(order);
         user.getBasket().getBooks().clear();
+
     }
 
     public User getUserByEmail(String email) {

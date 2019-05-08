@@ -1,10 +1,11 @@
 package com.merenaas.models;
 import lombok.*;
+//import org.joda.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 
@@ -35,23 +36,15 @@ public class Order {
     @NotNull
     private String address;
 
-//    @Column
-//    @NotNull
-//    private LocalDate date;
+    @Column(name = "date_of_order", columnDefinition = "date")
+    private LocalDate dateOfOrder;
 
-//    @Column(name = "user_first_name")
-//    private String userFirstName;
-//
-//    @Column(name = "user_last_name")
-//    private String userLastName;
-//
-//    @Column
-//    @NotNull
-//    private String phone;
-//
-//    @Column
-//    @NotNull
-//    private String email;
+    @Column(name = "date_of_delivery", columnDefinition = "date")
+    private LocalDate dateOfDelivery;
+
+    @Column(name = "date_of_return", columnDefinition = "date")
+    private LocalDate dateOfReturn;
+
 
     @Column
     private String comment;

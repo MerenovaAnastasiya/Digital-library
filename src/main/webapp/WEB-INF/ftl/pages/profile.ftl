@@ -39,6 +39,7 @@
     <#import "/spring.ftl" as spring />
     <div class="container">
         <form method="post" action="/checkOut">
+            <@spring.bind "checkoutForm"/>
             <div class="row  mb-2">
                 <div class="col-sm-2">
                     <label for="address">
@@ -47,10 +48,7 @@
                 </div>
                 <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.address"/>
-                <#--<input type="text" id="address" name="address">-->
                 </div>
-            </div>
-            <div class="row">
             </div>
             <div class="row mb-2">
                 <div class="col-sm-2">
@@ -60,7 +58,6 @@
                 </div>
                 <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.email"/>
-                <#--<input type="email" id="email" name="email">-->
                 </div>
             </div>
             <div class="row mb-2">
@@ -71,7 +68,26 @@
                 </div>
                 <div class="col-sm-5">
                 <@spring.formInput "checkoutForm.comment"/>
-                <#--<input type="tel" id="comment" name="comment" class="comment-input">-->
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <label for="datedOfDelivery">
+                        Дата доставки
+                    </label>
+                </div>
+                <div class="col-sm-5">
+                <@spring.formInput "checkoutForm.dateOfDelivery" "" "date"/>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-sm-2">
+                    <label for="dateOfReturn">
+                        Дата возврата
+                    </label>
+                </div>
+                <div class="col-sm-5">
+                <@spring.formInput "checkoutForm.dateOfReturn" "" "date"/>
                 </div>
             </div>
             <div class="row">
@@ -81,6 +97,7 @@
                     <input type="submit" value="Отправить" class="button">
                 </div>
             </div>
+
 
         </form>
     </div>
@@ -97,13 +114,16 @@
                 <p>
                         ${book.bookName}
                 </p>
-                <#--<p>-->
-                    <#--Количество: ${value}-->
-                <#--</p>-->
             </div>
         </#list>
         </#if>
     </div>
+    <div class="row recent_orders"
+         <#if orders??>
+             <#list orders as order>
+            <p>${order.address}</p>
+             </#list>
+         </#if>
 </div>
 <footer class="page-footer font-small unique-color-dark fixed-bottom">
     <div class="footer-copyright text-center py-3">© 2018 Copyright: Merenaas

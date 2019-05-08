@@ -3,6 +3,7 @@ package com.merenaas.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -19,8 +20,6 @@ public class Basket {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name="user_id")
     @Transient
     private User user;
 
@@ -28,6 +27,6 @@ public class Basket {
     @JoinTable(name = "basket_book",
             joinColumns = {@JoinColumn(name = "basket_id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id")})
-    private Set<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 }

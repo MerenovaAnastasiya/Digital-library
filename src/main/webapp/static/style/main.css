@@ -27,23 +27,6 @@
  * =================================================================== 
  */
 
-/** 
- * ===================================================================
- * webfonts and iconfonts 
- *
- * ------------------------------------------------------------------- 
- */
-
-@import url("fonts.css");
-@import url("ionicons/css/ionicons.min.css");
-@import url("micons/micons.css");
-
-/** 
- * ===================================================================
- * base style overrides
- *
- * ------------------------------------------------------------------- 
- */
 
 html {
 	font-size: 10px;
@@ -358,10 +341,6 @@ th:last-child, td:last-child {
  * Spacing  
  * -
  */
-
-button, .button {
-	margin-bottom: 1.2;
-}
 fieldset {
 	margin-bottom: 1.5rem;
 }
@@ -2239,12 +2218,10 @@ footer ul li {
 	text-align: center;
 	background: #048a7c;
 	color: #FFFFFF;
-	text-align: center;
 	text-transform: uppercase;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
 #go-top a i {
@@ -2255,5 +2232,3 @@ footer ul li {
 	background: #ff7b29;
 	color: #FFFFFF;
 }
-
-/*# sourceMappingURL=main.css.map */
