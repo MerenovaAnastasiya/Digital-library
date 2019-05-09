@@ -2,6 +2,7 @@ package com.merenaas.controllers;
 
 import com.merenaas.forms.CheckoutForm;
 import com.merenaas.forms.SignUpForm;
+import com.merenaas.forms.UpdateProfileForm;
 import com.merenaas.models.Order;
 import com.merenaas.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+
 import javax.validation.Valid;
 import java.util.Locale;
 
 @Controller
 public class UserController {
+    //TODO Delete this shit with auth!!!!
     private final UserService userService;
     private MessageSource messageSource;
 
@@ -53,6 +57,14 @@ public class UserController {
                                        CheckoutForm checkoutForm
             , @AuthenticationPrincipal User user ){
         userService.checkOut(checkoutForm, user);
+        return "redirect:/profile";
+    }
+
+    @PostMapping("/updateProfile")
+    public String updateProfilePost(@Valid @ModelAttribute("updateProfileForm")
+                                            UpdateProfileForm updateProfileForm
+            , @AuthenticationPrincipal User user ){
+        userService.updateInformation(updateProfileForm, user);
         return "redirect:/profile";
     }
 

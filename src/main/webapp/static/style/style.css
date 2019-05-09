@@ -382,11 +382,19 @@ input[type='submit'] {
 .profile-container h2 {
     text-transform: uppercase;
     margin-bottom: 40px;
-    border-bottom: 5px solid;
+    border-bottom: 5px solid #05bca9;
 }
-.profile-container label {
+.profile-container label,
+.profile-container input[type="text"],
+.profile-container input[type="email"]{
     color: white;
 }
+.update-inf-form input[type="text"],
+.update-inf-form input[type="email"] {
+    background-color: transparent;
+    border: none;
+}
+
 .comment-input {
     height: 200px;
 }

@@ -4,6 +4,7 @@ package com.merenaas.controllers;
 import com.merenaas.api.itbook.BookLoader;
 import com.merenaas.forms.CheckoutForm;
 import com.merenaas.forms.SignUpForm;
+import com.merenaas.forms.UpdateProfileForm;
 import com.merenaas.models.Basket;
 import com.merenaas.models.Book;
 import com.merenaas.models.Order;
@@ -21,6 +22,7 @@ import java.util.Set;
 
 @Controller
 public class BaseController {
+//TODO Delete this shit with auth!!!!
 
     public BaseController() {
     }
@@ -48,12 +50,9 @@ public class BaseController {
     @GetMapping(value = "/profile")
     public String profilePage(Model model, @AuthenticationPrincipal User user ) {
         model.addAttribute("user", user);
-        Basket basket = user.getBasket();
-        Set<Book> bookSet = basket.getBooks();
         List<Order> orders = user.getOrders();
-        model.addAttribute("books", bookSet);
-        model.addAttribute("checkoutForm", new CheckoutForm());
         model.addAttribute("orders", orders);
+        model.addAttribute("updateProfileForm", new UpdateProfileForm());
         return "profile";
     }
 
@@ -69,6 +68,16 @@ public class BaseController {
         model.addAttribute("book", Objects.requireNonNull(BookLoader.getBookByIsbn13(isbn13)));
         model.addAttribute("user", user);
         return "book";
+    }
+
+    @GetMapping(value = "/order")
+    public String orderPage(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user);
+        Basket basket = user.getBasket();
+        Set<Book> bookSet = basket.getBooks();
+        model.addAttribute("books", bookSet);
+        model.addAttribute("checkoutForm", new CheckoutForm());
+        return "order";
     }
 
 }

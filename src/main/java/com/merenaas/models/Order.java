@@ -45,7 +45,9 @@ public class Order {
     @Column(name = "date_of_return", columnDefinition = "date")
     private LocalDate dateOfReturn;
 
-
     @Column
     private String comment;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatusEnum status;
 }

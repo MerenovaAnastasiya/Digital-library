@@ -2,10 +2,8 @@ package com.merenaas.services;
 
 import com.merenaas.forms.CheckoutForm;
 import com.merenaas.forms.SignUpForm;
-import com.merenaas.models.Basket;
-import com.merenaas.models.Order;
-import com.merenaas.models.User;
-import com.merenaas.models.UserRoleEnum;
+import com.merenaas.forms.UpdateProfileForm;
+import com.merenaas.models.*;
 import com.merenaas.repositories.BasketRepository;
 import com.merenaas.repositories.OrderRepository;
 import com.merenaas.repositories.UserRepository;
@@ -64,12 +62,28 @@ public class UserService {
         order.setDateOfDelivery(dateOfDelivery);
         order.setDateOfReturn(dateOfReturn);
         order.setDateOfOrder(LocalDate.now());
+        order.setStatus(OrderStatusEnum.TREATMENT);
         order.setUser(user);
         order.setBooks(user.getBasket().getBooks());
         user.getOrders().add(order);
         orderRepository.save(order);
         user.getBasket().getBooks().clear();
 
+    }
+
+    public void updateInformation(UpdateProfileForm form, User user){
+        //TODO delete check strings. Maybe I can check it in ftl???
+        //but I tried to use Value for input and it doesn't work (((
+        if(!form.getLogin().equals("")) {
+            user.setLogin(form.getLogin());
+        }
+        if(!form.getEmail().equals("")) {
+            user.setEmail(form.getEmail());
+        }
+        if(!form.getPhoneNumber().equals("")){
+            user.setPhoneNumber(form.getPhoneNumber());
+        }
+        userRepository.save(user);
     }
 
     public User getUserByEmail(String email) {

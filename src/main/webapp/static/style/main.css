@@ -319,9 +319,9 @@ th, td {
 	text-align: left;
 	border-bottom: 1px solid #E8E8E8;
 }
-th {
-	color: #252525;
-	font-family: "raleway-bold", sans-serif;
+.recent_orders th, .recent_orders td {
+	text-align: center;
+
 }
 td {
 	line-height: 1.5;
