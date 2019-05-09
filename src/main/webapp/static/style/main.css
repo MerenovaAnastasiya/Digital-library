@@ -712,7 +712,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	position: relative;
 }
 .section-intro h1 {
-	font-family: "merriweather-bold", serif;
 	font-size: 4.8rem;
 	color: #252525;
 	line-height: 1.25;

@@ -15,14 +15,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Locale;
 
 @Controller
 public class UserController {
-    //TODO Delete this shit with auth!!!!
     private final UserService userService;
     private MessageSource messageSource;
 
@@ -51,7 +50,6 @@ public class UserController {
         return "redirect:/profile";
     }
 
-
     @PostMapping("/checkOut")
     public String checkOutPost(@Valid @ModelAttribute("checkOutForm")
                                        CheckoutForm checkoutForm
@@ -62,8 +60,31 @@ public class UserController {
 
     @PostMapping("/updateProfile")
     public String updateProfilePost(@Valid @ModelAttribute("updateProfileForm")
-                                            UpdateProfileForm updateProfileForm
-            , @AuthenticationPrincipal User user ){
+                                    UpdateProfileForm updateProfileForm,
+                                    BindingResult result,
+                                    @AuthenticationPrincipal User user,
+                                    RedirectAttributes attr){
+        if(userService.getUserByEmail(updateProfileForm.getEmail())!= null) {
+            FieldError ssoError = new FieldError("updateProfileForm", "email",
+                    messageSource.getMessage("email.used", null, Locale.getDefault()));
+            result.addError(ssoError);
+        }
+        if(userService.getUserByLogin(updateProfileForm.getLogin())!= null) {
+            FieldError ssoError = new FieldError("updateProfileForm", "login",
+                    messageSource.getMessage("login.used", null, Locale.getDefault()));
+            result.addError(ssoError);
+        }
+        if(userService.getUserByPhoneNumber(updateProfileForm.getPhoneNumber())!= null) {
+            FieldError ssoError = new FieldError("updateProfileForm", "phoneNumber",
+                    messageSource.getMessage("phone.used", null, Locale.getDefault()));
+            result.addError(ssoError);
+        }
+        if (result.hasErrors()) {
+            //TODO debug this shit!!!!!
+            attr.addFlashAttribute(result);
+            attr.addFlashAttribute(updateProfileForm);
+            return "redirect:/profile";
+        }
         userService.updateInformation(updateProfileForm, user);
         return "redirect:/profile";
     }

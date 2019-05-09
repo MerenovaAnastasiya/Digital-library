@@ -47,6 +47,11 @@
                             <@spring.formInput "updateProfileForm.login" "placeholder='-Login-'"/>
                         </#if>
                     </td>
+                    <td>
+                        <div class="error-message">
+                        <@spring.showErrors "updateProfileForm.login"/>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -59,6 +64,11 @@
                             <@spring.formInput "updateProfileForm.email" "placeholder='-Email-'"/>
                         </#if>
                     </td>
+                    <td>
+                        <div class="error-message">
+                        <@spring.showErrors "updateProfileForm.email"/>
+                        </div>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -70,6 +80,11 @@
                     <#else>
                         <@spring.formInput "updateProfileForm.phoneNumber" "placeholder='+7***-***-**-**'"/>
                     </#if>
+                    </td>
+                    <td>
+                        <div class="error-message">
+                        <@spring.showErrors "updateProfileForm.phoneNumber"/>
+                        </div>
                     </td>
                 </tr>
             </table>

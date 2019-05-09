@@ -92,5 +92,9 @@ public class UserService {
     public User getUserByLogin(String login) {
         return userRepository.findOneByLogin(login);
     }
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return userRepository.findOneByPhoneNumber(phoneNumber);
+    }
+
 
 }
