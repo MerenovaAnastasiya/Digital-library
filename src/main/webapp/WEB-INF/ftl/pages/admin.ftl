@@ -18,6 +18,7 @@
                  <#if order.status??>
                 <td>${order.status}</td>
                  </#if>
+                 </#if>
              </tr>
         </#list>
     </table>

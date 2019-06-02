@@ -137,27 +137,6 @@
         </div>
 
     </div>
-    <div class="row section-ads">
-
-        <div class="col-twelve">
-
-            <div class="ad-content">
-
-                <h2 class="h01">Читайте с удовольствием</h2>
-
-                <p class="lead">
-                    Два шедевра Альбера Камю – роман «Чума» и пьеса «Недоразумение» – объединены темами свободы и
-                    выбора, осознания человеком собственного бессилия перед лицом жестокого рока. Холодная хроника
-                    эпидемии чумы в курортном алжирском городке превращается в трагическую и пугающую притчу о
-                    смертельной опасности, пробуждающей в человеческой душе все лучшее – или худшее.
-                </p>
-
-                <div class="action">
-                    <a class="button large round" href="/signUp">Регистрация</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 
 <div class="footer-bottom">
@@ -172,9 +151,5 @@
         </div>
     </div>
 </div>
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/js/plugins.js"></script>
-<script src="/js/main.js"></script>
 </body>
 </html>

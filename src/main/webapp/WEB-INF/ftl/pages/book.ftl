@@ -55,11 +55,5 @@
     <div class="footer-copyright text-center py-3">© 2018 Copyright: Merenaas
     </div>
 </footer>
-<#--<t:fixed-footer/>-->
-<#--<#include "../macros/fixed-footer.ftl"/>-->
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/jquery-migrate-1.2.1.min.js"></script>
-<script src="/js/plugins.js"></script>
-<script src="/js/main.js"></script>
 </body>
 </html>

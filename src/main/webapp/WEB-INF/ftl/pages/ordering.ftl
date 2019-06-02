@@ -62,6 +62,5 @@
                 <input type="submit" value="Отправить" class="button">
             </div>
         </div>
-
     </form>
 </div>
