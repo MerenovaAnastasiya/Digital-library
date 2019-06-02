@@ -22,8 +22,12 @@ effective-settings.xml
 .cache
 .idea/
 *.iml
+*.eml
 *.log
 *.lck
 *.jar
 */dependency-reduced-pom.xml
 node_modules
+
+# Properties
+src/main/resources/db.properties
