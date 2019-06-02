@@ -1,12 +1,12 @@
 package com.merenaas.repositories;
-
-import com.merenaas.models.Book;
 import com.merenaas.models.Order;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Set;
 
-public interface OrderRepository extends CrudRepository<Order, Long> {
+
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }
 

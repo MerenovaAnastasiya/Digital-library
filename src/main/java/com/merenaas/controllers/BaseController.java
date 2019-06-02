@@ -26,6 +26,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class BaseController {
 
+
     @GetMapping(value = "/main")
     public String mainPage(Model model) {
         model.addAttribute("books", Objects.requireNonNull(BookLoader.getAllBooks()));
@@ -53,17 +54,6 @@ public class BaseController {
         return "profile";
     }
 
-    @GetMapping(value = "/library")
-    public String libraryPage(Model model) {
-        model.addAttribute("books", Objects.requireNonNull(BookLoader.getAllBooks()));
-        return "library";
-    }
-
-    @GetMapping(value = "/book")
-    public String bookPage(Model model, @RequestParam String isbn13) {
-        model.addAttribute("book", Objects.requireNonNull(BookLoader.getBookByIsbn13(isbn13)));
-        return "book";
-    }
 
     @GetMapping(value = "/order")
     public String orderPage(Model model, @AuthenticationPrincipal User user) {

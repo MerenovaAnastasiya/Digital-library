@@ -31,25 +31,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/signUp")
-    public String signUpPost(@Valid @ModelAttribute("signUpForm")
-                                     SignUpForm signUpForm, BindingResult result) {
-        if(userService.getUserByEmail(signUpForm.getEmail())!= null) {
-            FieldError ssoError = new FieldError("signUpForm", "email", messageSource.getMessage("email.used", null, Locale.getDefault()));
-            result.addError(ssoError);
-        }
-        if(userService.getUserByLogin(signUpForm.getLogin())!= null) {
-            FieldError ssoError = new FieldError("signUpForm", "login", messageSource.getMessage("login.used", null, Locale.getDefault()));
-            result.addError(ssoError);
-        }
-        if (result.hasErrors()) {
-            return "signUp";
-        }
-
-        userService.signUp(signUpForm);
-        return "redirect:/profile";
-    }
-
     @PostMapping("/checkOut")
     public String checkOutPost(@Valid @ModelAttribute("checkOutForm")
                                        CheckoutForm checkoutForm
@@ -80,7 +61,7 @@ public class UserController {
             result.addError(ssoError);
         }
         if (result.hasErrors()) {
-            //TODO debug this shit!!!!!
+            //TODO debug
             attr.addFlashAttribute(result);
             attr.addFlashAttribute(updateProfileForm);
             return "redirect:/profile";

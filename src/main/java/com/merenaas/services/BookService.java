@@ -12,21 +12,22 @@ import java.util.Optional;
 @Service
 @NoArgsConstructor
 public class BookService {
+
     private BookRepository bookRepository;
 
     @Autowired
     public BookService(BookRepository bookRepository) {
-
         this.bookRepository = bookRepository;
     }
-
 
     public List<Book> getAllBooks() {
         return (List<Book>) bookRepository.findAll();
     }
-
     public Optional<Book> getBook(Long id) {
         return bookRepository.findById(id);
+    }
+    public Book getBookByIsbn13(String isbn13){
+        return bookRepository.findOneByIsbn13(isbn13);
     }
 
     public void saveBook(Book book) {

@@ -44,14 +44,9 @@
             ${book.description}
             </p>
             <#if user??>
-            <#--<form method="get" action="/addBook?isbn13=123">-->
-                <#--&lt;#&ndash;<input type="text" value="${book.id}" name="book-id" style="display: none">&ndash;&gt;-->
-            <a href="/addBook?isbn13=${book.ISBN13}">
+            <a href="/addBook?isbn13=${book.isbn13}">
                 <input type="submit" value="Заказать" class="button"">
             </a>
-            <#--</form>-->
-
-
             </#if>
         </div>
     </div>

@@ -25,10 +25,8 @@ public class BasketService {
         this.basketRepository = basketRepository;
     }
 
-    public void addBookToBasket(Optional<Book> book, Basket basket) {
-//        System.out.println(basket.getId());
-        System.out.println(basket.getId() + " " + book.get().getId());
-        basket.getBooks().add(book.get());
-        basketRepository.addBookToBasket(basket.getId(), book.get().getId());
+    public void addBookToBasket(Book book, Basket basket) {
+        basket.getBooks().add(book);
+        basketRepository.addBookToBasket(basket.getId(), book.getId());
     }
 }

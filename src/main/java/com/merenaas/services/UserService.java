@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Set;
 
 @Service
 @NoArgsConstructor
@@ -44,8 +45,14 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(registrationForm.getPassword()));
         user.setUuid(UUID.randomUUID().toString());
         user.setBasket(basket);
+
         Set<UserRoleEnum> roleSet = new HashSet<>();
-        roleSet.add(UserRoleEnum.USER);
+        if(registrationForm.getEmail().equals("admin@mail.ru")){
+            roleSet.add(UserRoleEnum.ADMIN);
+        }
+        else {
+            roleSet.add(UserRoleEnum.USER);
+        }
         user.setRoles(roleSet);
         user.setUuid(UUID.randomUUID().toString());
         basketRepository.save(basket);

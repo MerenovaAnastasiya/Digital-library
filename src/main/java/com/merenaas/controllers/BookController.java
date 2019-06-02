@@ -23,10 +23,23 @@ public class BookController {
     @GetMapping(value = "/addBook")
     public String addBook(Model model, @AuthenticationPrincipal User user, @RequestParam String isbn13) {
         model.addAttribute("user", user);
-        Book book = BookLoader.getBookByIsbn13(isbn13);
+        Book book = bookService.getBookByIsbn13(isbn13);
         bookService.saveBook(book);
         Basket basket = user.getBasket();
-        basketService.addBookToBasket(bookService.getBook(book.getId()), basket);
+        basketService.addBookToBasket(bookService.getBook(book.getId()).get(), basket);
         return "redirect:/book/?isbn13="+isbn13;
+    }
+
+    @GetMapping(value = "/library")
+    public String libraryPage(Model model) {
+        model.addAttribute("books", bookService.getAllBooks());
+        return "library";
+    }
+
+    @GetMapping(value = "/book")
+    public String bookPage(Model model, @RequestParam String isbn13, @AuthenticationPrincipal User user) {
+        model.addAttribute("book", bookService.getBookByIsbn13(isbn13));
+        model.addAttribute("user", user);
+        return "book";
     }
 }

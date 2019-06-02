@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 
@@ -35,6 +36,7 @@ public class User implements UserDetails {
 
     @Column
     @NotNull
+    @Email
     private String email;
 
     @Column
@@ -57,9 +59,10 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<UserRoleEnum> roles;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return getRoles();
     }
 
     @Override

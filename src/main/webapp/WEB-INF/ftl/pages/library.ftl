@@ -17,7 +17,6 @@
         <div class="logo">
             <a href="/main">Lhander</a>
         </div>
-
         <nav id="main-nav-wrap">
             <ul class="main-navigation">
                 <li><a href="/library">Библиотека</a></li>
@@ -36,7 +35,7 @@
     <div class="row books-row">
         <#list books as book>
             <div class="col-sm-12 col-lg-3 book-item">
-                <a href="book?isbn13=${book.ISBN13}"><img src="${book.path}"></a>
+                <a href="book?isbn13=${book.isbn13}"><img src="${book.path}"></a>
             </div>
         </#list>
     </div>

@@ -97,7 +97,7 @@ public class BookLoader {
         String path = (String) bookJson.get("image");
         String description = (String) bookJson.get("subtitle");
         book.setBookName(bookName);
-        book.setISBN13(isbn13);
+        book.setIsbn13(isbn13);
         book.setPath(path);
         book.setDescription(description);
         return book;
