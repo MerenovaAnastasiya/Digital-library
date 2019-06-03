@@ -1,4 +1,4 @@
-# digital-library
+# Digital library
 Web site on Java with Spring and PostgresDB
 
 # Technology
