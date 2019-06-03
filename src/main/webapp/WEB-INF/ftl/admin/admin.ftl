@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<head>
-</head>
-<body>
+<#import "../templates/main.ftl" as main/>
+<@main.main title="Страница администратора">
     <table>
         <tr>
             <th>
@@ -22,5 +20,4 @@
              </tr>
         </#list>
     </table>
-</body>
-</html>
+</@main.main>

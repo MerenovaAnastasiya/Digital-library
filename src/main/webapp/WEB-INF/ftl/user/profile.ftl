@@ -1,34 +1,5 @@
-<!DOCTYPE html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/style/base.css">
-    <link rel="stylesheet" href="/static/style/fonts.css">
-    <link rel="stylesheet" href="/static/style/main.css">
-    <link rel="stylesheet" href="/static/style/style.css">
-    <script src="/static/js/modernizr.js"></script>
-    <title>Личная страница</title>
-</head>
-
-<body>
-<header class="sticky">
-    <div class="row">
-        <div class="logo">
-            <a href="/main">DLibrary</a>
-        </div>
-        <nav id="main-nav-wrap">
-            <ul class="main-navigation">
-                <li><a href="/library">Библиотека</a></li>
-                <li class="highlight with-sep">
-                    <form action="/logOut">
-                        <input type="submit" value="выйти">
-                    </form>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<#import "../templates/main.ftl" as main/>
+<@main.main title="Профайл">
 <div class="container profile-container">
     <h2>Контактная информация</h2>
     <div class="row">
@@ -128,9 +99,4 @@
     <p><a href="/library">Перейти к выбору книг</a></p>
     </#if>
 </div>
-<footer class="page-footer font-small unique-color-dark fixed-bottom">
-    <div class="footer-copyright text-center py-3">© 2018 Copyright: Merenaas
-    </div>
-</footer>
-</body>
-</html>
+</@main.main>
