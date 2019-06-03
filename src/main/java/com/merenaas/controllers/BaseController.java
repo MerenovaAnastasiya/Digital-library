@@ -1,7 +1,6 @@
 package com.merenaas.controllers;
 
 
-import com.merenaas.api.itbook.BookLoader;
 import com.merenaas.forms.CheckoutForm;
 import com.merenaas.forms.SignUpForm;
 import com.merenaas.forms.UpdateProfileForm;
@@ -9,16 +8,14 @@ import com.merenaas.models.Basket;
 import com.merenaas.models.Book;
 import com.merenaas.models.Order;
 import com.merenaas.models.User;
-import com.merenaas.services.BookService;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 
@@ -26,12 +23,6 @@ import java.util.Set;
 @NoArgsConstructor
 public class BaseController {
 
-
-    @GetMapping(value = "/main")
-    public String mainPage(Model model) {
-        model.addAttribute("books", Objects.requireNonNull(BookLoader.getAllBooks()));
-        return "main";
-    }
 
     @GetMapping(value = "/signIn")
     public String signInPage() {
@@ -51,7 +42,7 @@ public class BaseController {
         List<Order> orders = user.getOrders();
         model.addAttribute("orders", orders);
         model.addAttribute("updateProfileForm", new UpdateProfileForm());
-        return "profile";
+        return "user/profile";
     }
 
 
@@ -61,7 +52,7 @@ public class BaseController {
         Set<Book> bookSet = basket.getBooks();
         model.addAttribute("books", bookSet);
         model.addAttribute("checkoutForm", new CheckoutForm());
-        return "order";
+        return "user/order";
     }
 
 }

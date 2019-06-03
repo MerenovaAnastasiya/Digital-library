@@ -32,14 +32,15 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public FreeMarkerConfigurer freeMarkerConfig(){
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/ftl/pages/");
+        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/ftl/");
         freeMarkerConfigurer.setDefaultEncoding("UTF-8");
         return freeMarkerConfigurer;
     }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").
-                addResourceLocations("/static/");
+        registry.addResourceHandler("/assets/**").
+                addResourceLocations("/assets/");
+
     }
 
     @Bean

@@ -4,9 +4,8 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Вход</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style/style.css">>
+    <link rel="stylesheet" href="/assets/style/style.css">>
 </head>
-
 <body class="align">
     <div class="grid">
         <form method="post" class="form login" action="/signIn">

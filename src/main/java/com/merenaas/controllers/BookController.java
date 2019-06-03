@@ -1,6 +1,5 @@
 package com.merenaas.controllers;
 
-import com.merenaas.api.itbook.BookLoader;
 import com.merenaas.models.Basket;
 import com.merenaas.models.Book;
 import com.merenaas.models.User;
@@ -19,6 +18,12 @@ public class BookController {
     private BasketService basketService;
     @Autowired
     private BookService bookService;
+
+    @GetMapping(value = "/main")
+    public String mainPage(Model model) {
+        model.addAttribute("books", bookService.getAllBooks());
+        return "main";
+    }
 
     @GetMapping(value = "/addBook")
     public String addBook(Model model, @AuthenticationPrincipal User user, @RequestParam String isbn13) {

@@ -50,6 +50,7 @@ public class BookLoader {
 
                     }
                 } else {
+                    System.out.println(contentTypeHeaders[0].getValue());
                     throw new IllegalArgumentException();
                 }
             }

@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -26,14 +27,13 @@ public class SecurityController {
         this.userService = userService;
     }
 
-//    @GetMapping(value = "/success")
-//    public String successAfterLogin(HttpServletRequest request) {
-//        System.out.println(request.getUserPrincipal().getName());
-//        if(request.getAuthType()) {
+    @GetMapping(value = "/success")
+    public String successAfterLogin(HttpServletRequest request) {
+//        if(request.isUserInRole("ROLE_ADMIN")) {
 //            return "redirect:/admin";
 //        }
-//        return "redirect:/profile";
-//    }
+        return "redirect:/profile";
+    }
 
     @PostMapping("/signUp")
     public String signUpPost(@Valid @ModelAttribute("signUpForm")

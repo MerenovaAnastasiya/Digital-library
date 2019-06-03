@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/style/base.css">
-    <link rel="stylesheet" href="/static/style/fonts.css">
-    <link rel="stylesheet" href="/static/style/main.css">
-    <link rel="stylesheet" href="/static/style/style.css">
-    <script src="/static/js/modernizr.js"></script>
-    <script src="/static/js/modernizr.js"></script>
-</head>
-<body id="top">
-<header>
-    <div class="row">
-        <div class="logo">
-            <a href="/main">Lhander</a>
-        </div>
-        <nav id="main-nav-wrap">
-            <ul class="main-navigation">
-                <li><a href="/library">Библиотека</a></li>
-                <li class="highlight with-sep">
-                        <#if user??>
-                            <a href="profile" style="color: white">${user.login}</a>
-                        <#else><a href="/signIn" title="">Войти</a></a></#if>
-                </li>
-            </ul>
-        </nav>
-        <a class="menu-toggle" href="#"><span>Menu</span></a>
-    </div>
-</header>
+<#import "templates/main.ftl" as main/>
+<@main.main title="Главная страница">
 <section id="intro">
     <div class="shadow-overlay"></div>
     <div class="intro-content">
@@ -96,7 +66,7 @@
             <h1>вопросы и ответы</h1>
         </div>
     </div>
-ъ    <div class="row faq-content">
+    <div class="row faq-content">
         <div class="q-and-a block-1-2 block-tab-full group">
             <div class="bgrid">
                 <h3>Вопрос 1</h3>
@@ -131,25 +101,8 @@
                 <h3>Вопрос 6</h3>
                 <p>Ответ на вопрос. Ответ на вопрос. Ответ на вопрос. Ответ на вопрос. Ответ на вопрос.
                     Ответ на вопрос. Ответ на вопрос. Ответ на вопрос. Ответ на вопрос.</p>
-
             </div>
-
         </div>
-
     </div>
 </section>
-
-<div class="footer-bottom">
-
-    <div class="row">
-
-        <div class="col-twelve">
-            <div class="copyright">
-                <span>© Copyright</span>
-                <span>DLibrary</span>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
+</@main.main>

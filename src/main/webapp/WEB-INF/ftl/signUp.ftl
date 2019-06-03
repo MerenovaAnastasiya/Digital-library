@@ -5,7 +5,7 @@
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="/assets/style/style.css">
 </head>
 <body class="align">
     <div class="grid">
@@ -33,9 +33,6 @@
                 <div class="error-message">
                     <@spring.showErrors "signUpForm.password"/>
                 </div>
-                <#--<div>-->
-                    <#--<@spring.formCheckbox "signUpForm.rememberMe"/>-->
-                <#--</div>-->
             </div>
             <footer class="login__footer">
                 <input type="submit" value="Регистрация">

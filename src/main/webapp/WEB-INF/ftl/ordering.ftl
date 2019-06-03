@@ -33,7 +33,6 @@
                 <@spring.formInput "checkoutForm.comment"/>
             </div>
         </div>
-        <p>TTTTTTT</p>
         <div class="row">
             <div class="col-sm-2">
                 <label>
