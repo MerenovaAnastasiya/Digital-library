@@ -1,18 +1,17 @@
 package com.merenaas.controllers;
 
 import com.merenaas.forms.CheckoutForm;
-import com.merenaas.forms.SignUpForm;
 import com.merenaas.forms.UpdateProfileForm;
-import com.merenaas.models.Order;
 import com.merenaas.models.User;
+import com.merenaas.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import com.merenaas.services.UserService;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,14 +21,12 @@ import java.util.Locale;
 
 @Controller
 public class UserController {
-    private final UserService userService;
-    private MessageSource messageSource;
 
     @Autowired
-    public UserController(UserService userService) {
+    private UserService userService;
 
-        this.userService = userService;
-    }
+    @Autowired
+    private MessageSource messageSource;
 
     @PostMapping("/checkOut")
     public String checkOutPost(@Valid @ModelAttribute("checkOutForm")
@@ -38,6 +35,23 @@ public class UserController {
         userService.checkOut(checkoutForm, user);
         return "redirect:/profile";
     }
+
+    @GetMapping(value = "/profile")
+    public String profilePage(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("user", user);
+        model.addAttribute("orders", user.getOrders());
+        model.addAttribute("updateProfileForm", new UpdateProfileForm());
+        return "user/profile";
+    }
+
+
+    @GetMapping(value = "/order")
+    public String orderPage(Model model, @AuthenticationPrincipal User user) {
+        model.addAttribute("books", user.getBasket().getBooks());
+        model.addAttribute("checkoutForm", new CheckoutForm());
+        return "user/order";
+    }
+
 
     @PostMapping("/updateProfile")
     public String updateProfilePost(@Valid @ModelAttribute("updateProfileForm")
@@ -68,11 +82,6 @@ public class UserController {
         }
         userService.updateInformation(updateProfileForm, user);
         return "redirect:/profile";
-    }
-
-    @Autowired
-    public void setMessageSource(MessageSource messageSource) {
-        this.messageSource = messageSource;
     }
 
 }

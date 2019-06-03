@@ -19,12 +19,6 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @GetMapping(value = "/main")
-    public String mainPage(Model model) {
-        model.addAttribute("books", bookService.getAllBooks());
-        return "main";
-    }
-
     @GetMapping(value = "/addBook")
     public String addBook(Model model, @AuthenticationPrincipal User user, @RequestParam String isbn13) {
         model.addAttribute("user", user);
@@ -33,12 +27,6 @@ public class BookController {
         Basket basket = user.getBasket();
         basketService.addBookToBasket(bookService.getBook(book.getId()).get(), basket);
         return "redirect:/book/?isbn13="+isbn13;
-    }
-
-    @GetMapping(value = "/library")
-    public String libraryPage(Model model) {
-        model.addAttribute("books", bookService.getAllBooks());
-        return "library";
     }
 
     @GetMapping(value = "/book")

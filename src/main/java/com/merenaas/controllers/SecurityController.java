@@ -4,7 +4,13 @@ import com.merenaas.forms.SignUpForm;
 import com.merenaas.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Collection;
 import java.util.Locale;
 
 @Controller
@@ -23,16 +30,27 @@ public class SecurityController {
 
     @Autowired
     public SecurityController(UserService userService) {
-
         this.userService = userService;
     }
 
     @GetMapping(value = "/success")
-    public String successAfterLogin(HttpServletRequest request) {
-//        if(request.isUserInRole("ROLE_ADMIN")) {
-//            return "redirect:/admin";
-//        }
+    public String successAfterLogin(Authentication authentication) {
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        if(authorities.stream().anyMatch(e -> (e.getAuthority().equals("ADMIN")))) {
+            return "redirect:/admin";
+        }
         return "redirect:/profile";
+    }
+
+    @GetMapping(value = "/signIn")
+    public String signInPage() {
+        return "signIn";
+    }
+
+    @GetMapping(value = "/signUp")
+    public String signUpPage(Model model) {
+        model.addAttribute("signUpForm", new SignUpForm());
+        return "signUp";
     }
 
     @PostMapping("/signUp")
@@ -52,11 +70,6 @@ public class SecurityController {
 
         userService.signUp(signUpForm);
         return "redirect:/profile";
-    }
-
-    @Autowired
-    public void setMessageSource(MessageSource messageSource) {
-        this.messageSource = messageSource;
     }
 
 }
