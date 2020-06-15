@@ -18,7 +18,7 @@
         <!--Spring -->
         <spring-framework.version>5.1.5.RELEASE</spring-framework.version>
         <spring-data-jpa.version>2.1.2.RELEASE</spring-data-jpa.version>
-        <spring-security.version>5.1.4.RELEASE</spring-security.version>
+        <spring-security.version>5.3.3.RELEASE</spring-security.version>
 
         <!-- Java EE / Java SE dependencies -->
 
